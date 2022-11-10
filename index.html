@@ -3,14 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Jadwal Shalat by Shalat yuk</title>
+    <meta name=”robots” content=”index, follow”> 
+    <title>Jadwal Shalat Hari ini by Shalat yuk</title>
+    <meta name="description" content="Jadwal atau waktu shalat hari ini di seluruh wilayah indonesia">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/sticky-footer.css" rel="stylesheet" type="text/css" >
+    <link href="assets/css/placeholder-loading.min.css" rel="stylesheet" type="text/css" >
+    <link rel="canonical" href="http://localhost/shalat-yuk/" />
   </head>
   <body>
+    <h1 class="head-h1">Jadwal Shalat Hari ini di Seluruh Wilayah Indonesia</h1>
     <nav class="navbar bg-light">
       <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1">Shalat-yuk</span>
+        <span class="navbar-brand mb-0 h1">Shalat yuk</span>
       </div>
     </nav>
   <div class="container text-center">
@@ -23,30 +28,39 @@
         <div class="h4 pb-2 mb-4 text-success border-bottom border-success">
           Jadwal Shalat Hari ini
         </div>
-        <form class="p-1">
-          <select class="form-select form-select-sm" aria-label="Default select example" id="kota">
-            <option>Pilih Kota</option>
-          </select>
-        </form>
-        <table class="table table-success table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Tanggal</th>
-            <th scope="col">Subuh</th>
-            <th scope="col">Terbit</th>
-            <th scope="col">Dhuha</th>
-            <th scope="col">Dzuhur</th>
-            <th scope="col">Ashar</th>
-            <th scope="col">Maghrib</th>
-            <th scope="col">Isya</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr id="jadwal">
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+        <div id="content">
+          <div class="ph-col-12 sy-placeholder">
+              <div class="ph-row">
+                  <div class="ph-col-12 big"></div>
+              </div>
+              <div class="ph-picture"></div>
+          </div>
+          <form class="p-1 select-kota">
+            <select class="form-select form-select-sm" aria-label="Default select example" id="kota">
+              <option>Pilih Kota</option>
+            </select>
+          </form>
+          <div class="table-responsive">
+            <table class="table table-success table-striped table-shalat">
+            <thead>
+              <tr>
+                <th scope="col">Tanggal</th>
+                <th scope="col">Subuh</th>
+                <th scope="col">Terbit</th>
+                <th scope="col">Dhuha</th>
+                <th scope="col">Dzuhur</th>
+                <th scope="col">Ashar</th>
+                <th scope="col">Maghrib</th>
+                <th scope="col">Isya</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="jadwal">
+              </tr>
+            </tbody>
+            </table>
+          </div>
+        </div>
       </div>
       <div class="col-2">
         <!-- ads here -->
@@ -57,11 +71,12 @@
   <footer class="footer">
     <div class="container">
       <span class="text-muted">
-      Copyright @ 2022 Shalat-yuk, Api powered by <a href="https://fathimah.docs.apiary.io/#reference/sholat/semua-kota" rel="nofollow" target="_blank">Fatimah bot</a>
+      Copyright @ <span id="year"></span> Shalat-yuk, Api powered by <a href="https://fathimah.docs.apiary.io/#reference/sholat/semua-kota" rel="nofollow" target="_blank">Fatimah bot</a>
     </span>
     </div>
   </footer>
 
+    <script src="assets/js/jquery-3.6.1.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js" ></script>
     <script src="assets/js/syk.js"></script>
   </body>

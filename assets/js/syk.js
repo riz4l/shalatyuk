@@ -2,8 +2,14 @@ var jadwalShalat = {
 	  url_kota : 'https://api.banghasan.com/sholat/format/json/kota',
 
 	  init :function() { 
+	  	jadwalShalat.runPlaceholder();
 	  	jadwalShalat.getKota();
-	  	jadwalShalat.getShalat(this.getToday());
+	  	jadwalShalat.getShalat(667, this.getToday());
+	  	jadwalShalat.onChange();
+
+	  	var date = new Date();
+        var fullYear = date.getFullYear();
+        document.getElementById('year').innerText = fullYear;
 	  },
 
 	  getKota : function() {
@@ -24,9 +30,9 @@ var jadwalShalat = {
 	  	xhr.send();
 	  },
 
-	  getShalat : function(v)
+	  getShalat : function(k, t)
 	  {
-	  	var url = `https://api.banghasan.com/sholat/format/json/jadwal/kota/667/tanggal/${v}`;
+	  	var url = `https://api.banghasan.com/sholat/format/json/jadwal/kota/${k}/tanggal/${t}`;
 	  	var xhr = new XMLHttpRequest();
 
 	  	xhr.onreadystatechange = function() {
@@ -39,6 +45,13 @@ var jadwalShalat = {
 
 	  	xhr.open('GET', url, true);
 	  	xhr.send();
+	  },
+
+	  onChange : function () {
+	  	const selectKota = document.getElementById('kota');
+	  	selectKota.addEventListener('change', function(e) {
+	  		jadwalShalat.getShalat(e.target.value, jadwalShalat.getToday());
+	  	});
 	  },
 
 	  setSelected : function(v) {
@@ -76,6 +89,24 @@ var jadwalShalat = {
 	  			<td>${v.isya}</td>
 	  	`;
 	  	return tableJadwal.innerHTML = html;
+	  },
+
+	  showPlaceholder : function()
+	  {
+	  	$('.select-kota').hide();
+	  	$('.table-shalat').hide();
+		$('.sy-placeholder').show();
+	  	return new Promise((resolve, reject) => {
+	  		setTimeout(() => {
+				resolve($('.sy-placeholder').remove());
+			}, 3000)
+	  	})
+	  },
+
+	  runPlaceholder : async function(){
+	  	await jadwalShalat.showPlaceholder();
+	  	$('.select-kota').show();
+	  	$('.table-shalat').show();
 	  }
 }
 
