@@ -23,3 +23,23 @@ border: 0 !important; clip: rect(0 0 0 0) !important; height: 0.0625rem !importa
 .text-muted{ 
 	font-size: smaller;
  }
+
+
+.left {
+  width: 16.66666667%; /* The width is 20%, by default */
+}
+
+.main {
+  width: 66.66666667%; /* The width is 60%, by default */
+}
+
+.right {
+  width: 16.66666667%; /* The width is 20%, by default */
+}
+
+/* Use a media query to add a break point at 800px: */
+@media screen and (max-width: 800px) {
+  .left, .main, .right {
+    width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+  }
+}
