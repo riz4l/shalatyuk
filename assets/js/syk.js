@@ -110,5 +110,6 @@ var jadwalShalat = {
 	  	$('.table-shalat').show();
 	  }
 }
-
-jadwalShalat.init();
+$(function(){
+	jadwalShalat.init();
+})
