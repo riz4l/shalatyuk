@@ -29,4 +29,7 @@ border: 0 !important; clip: rect(0 0 0 0) !important; height: 0.0625rem !importa
   .left, .main, .right {
     width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
   }
+  .terbit {
+  	display: none;
+  }
 }

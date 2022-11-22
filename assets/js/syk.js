@@ -2,6 +2,7 @@ var jadwalShalat = {
 	  url_kota : 'https://api.banghasan.com/sholat/format/json/kota',
 
 	  init :function() { 
+	  	jadwalShalat.display_ct();
 	  	jadwalShalat.runPlaceholder();
 	  	jadwalShalat.getKota();
 	  	jadwalShalat.getShalat(667, this.getToday());
@@ -80,9 +81,8 @@ var jadwalShalat = {
 	  blockJadwal : function(v) {
   		const tableJadwal = document.getElementById('jadwal');
 	  	var html = `
-	  			<td>${v.tanggal}</td>
 	  			<td>${v.subuh}</td>
-	  			<td>${v.terbit}</td>
+	  			<td class="terbit">${v.terbit}</td>
 	  			<td>${v.dhuha}</td>
 	  			<td>${v.dzuhur}</td>
 	  			<td>${v.ashar}</td>
@@ -108,7 +108,21 @@ var jadwalShalat = {
 	  	await jadwalShalat.showPlaceholder();
 	  	$('.select-kota').show();
 	  	$('.table-shalat').show();
-	  }
+	  },
+
+	  display_c : function() {
+		var refresh=1000; // Refresh rate in milli seconds
+		mytime=setTimeout('jadwalShalat.display_ct()',refresh)
+	  },
+
+	  display_ct: function()
+	  {
+		var x = new Date()
+		var x1=x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getFullYear(); 
+		x1 = x1 + " - " +  x.getHours( )+ ":" +  (x.getMinutes()<10?'0':'') + x.getMinutes()  + ":" +  x.getSeconds();
+		document.getElementById('ct').innerHTML = x1;
+		jadwalShalat.display_c();
+	}
 }
 $(function(){
 	jadwalShalat.init();
