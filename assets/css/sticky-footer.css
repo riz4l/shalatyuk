@@ -24,6 +24,10 @@ border: 0 !important; clip: rect(0 0 0 0) !important; height: 0.0625rem !importa
 	font-size: smaller;
  }
 
+ .font-size { 
+ 	font-size: 1em!important;
+  }
+
 /* Use a media query to add a break point at 800px: */
 @media screen and (max-width: 800px) {
   .left, .main, .right {
