@@ -51,7 +51,7 @@ var jadwalShalat = {
 	  onChange : function () {
 	  	const selectKota = document.getElementById('kota');
 	  	selectKota.addEventListener('change', function(e) {
-	  		$('#jadwal td').css({'background-color':'#198754', 'color':'white'});
+	  		$('#jadwal td').css({'background-color':'#ced4da', 'color':'black'});
 	  		jadwalShalat.getShalat(e.target.value, jadwalShalat.getToday());
 	  	});
 	  },
