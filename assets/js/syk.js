@@ -51,27 +51,28 @@ var jadwalShalat = {
 
 	  getAyat : function()
 	  {
-	  	var url = `https://doa-doa-api-ahmadramadhan.fly.dev/api/doa/v1/random`;
-	  	var xhr = new XMLHttpRequest();
+	  	var url = 'http://localhost/shalat-yuk/assets/json/'+jadwalShalat.getRandomInt(38)+'.json';
+	  	$.ajax({
+		  dataType: "json",
+		  url: url,
+		  success: function(data){
+		  	console.log(data[0].doa);
+		  	var doa = document.getElementById('doa'),
+		  		ayat = document.getElementById('ayat'),
+		  		latin = document.getElementById('latin'),
+		  		arti = document.getElementById('arti');
 
-	  	xhr.onreadystatechange = function() {
-	  		if(this.readystate == 4 && this.status == 200) {
-	  			var data = JSON.parse(this.responseText);
-	  			var doa = document.getElementById('doa'),
-	  				ayat = document.getElementById('ayat'),
-	  				latin = document.getElementById('latin'),
-	  				arti = document.getElementById('arti');
-
-	  			doa.innerText = data.doa;
-	  			ayat.innerText = data.ayat;
-	  			latin.innerText = data.latin;
-	  			arti.innerText = data.artinya;
-	  		}
-	  	}
-	  	
-	  	xhr.open('GET', url, true);
-	  	xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
-	  	xhr.send();
+		  	if(data !== ''){
+		  		doa.innerText   = data[0].doa;
+		  		ayat.innerText  = data[0].ayat;
+		  		latin.innerText = data[0].latin;
+		  		arti.innerText  = data[0].artinya;
+		  	}
+		  },
+		  error: function (xhr, ajaxOptions, thrownError) {
+	        console.log(xhr.status);
+	      }
+		});
 
 	  },
 
@@ -149,6 +150,10 @@ var jadwalShalat = {
 		x1 = x1 + " - " +  x.getHours( )+ ":" +  (x.getMinutes()<10?'0':'') + x.getMinutes()  + ":" +  x.getSeconds();
 		document.getElementById('ct').innerHTML = x1;
 		jadwalShalat.display_c();
+	  },
+
+	getRandomInt : function (max){
+	  return Math.floor(Math.random() * max);
 	}
 }
 $(function(){
