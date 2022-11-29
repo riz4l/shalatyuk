@@ -70,6 +70,7 @@ var jadwalShalat = {
 	  	}
 	  	
 	  	xhr.open('GET', url, true);
+	  	xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
 	  	xhr.send();
 
 	  },
