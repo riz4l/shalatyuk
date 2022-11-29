@@ -118,7 +118,7 @@ var jadwalShalat = {
 	  display_ct: function()
 	  {
 		var x = new Date()
-		var x1=x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getFullYear(); 
+		var x1= x.getDate() + "/"+  x.getMonth() + "/" + x.getFullYear(); 
 		x1 = x1 + " - " +  x.getHours( )+ ":" +  (x.getMinutes()<10?'0':'') + x.getMinutes()  + ":" +  x.getSeconds();
 		document.getElementById('ct').innerHTML = x1;
 		jadwalShalat.display_c();
