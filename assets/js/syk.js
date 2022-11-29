@@ -83,7 +83,7 @@ var jadwalShalat = {
 	  	var html = `
 	  			<td>${v.subuh}</td>
 	  			<td class="terbit">${v.terbit}</td>
-	  			<td>${v.dhuha}</td>
+	  			<td class="dhuha">${v.dhuha}</td>
 	  			<td>${v.dzuhur}</td>
 	  			<td>${v.ashar}</td>
 	  			<td>${v.maghrib}</td>
