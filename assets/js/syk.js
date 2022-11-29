@@ -3,6 +3,7 @@ var jadwalShalat = {
 
 	  init :function() { 
 	  	jadwalShalat.display_ct();
+	  	jadwalShalat.getAyat();
 	  	jadwalShalat.runPlaceholder();
 	  	jadwalShalat.getKota();
 	  	jadwalShalat.getShalat(667, this.getToday());
@@ -46,6 +47,31 @@ var jadwalShalat = {
 
 	  	xhr.open('GET', url, true);
 	  	xhr.send();
+	  },
+
+	  getAyat : function()
+	  {
+	  	var url = `https://doa-doa-api-ahmadramadhan.fly.dev/api/doa/v1/random`;
+	  	var xhr = new XMLHttpRequest();
+
+	  	xhr.onreadystatechange = function() {
+	  		if(this.readystate == 4 && this.status == 200) {
+	  			var data = JSON.parse(this.responseText);
+	  			var doa = document.getElementById('doa'),
+	  				ayat = document.getElementById('ayat'),
+	  				latin = document.getElementById('latin'),
+	  				arti = document.getElementById('arti');
+
+	  			doa.innerText = data.doa;
+	  			ayat.innerText = data.ayat;
+	  			latin.innerText = data.latin;
+	  			arti.innerText = data.artinya;
+	  		}
+	  	}
+	  	
+	  	xhr.open('GET', url, true);
+	  	xhr.send();
+
 	  },
 
 	  onChange : function () {
