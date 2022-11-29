@@ -51,7 +51,7 @@ var jadwalShalat = {
 
 	  getAyat : function()
 	  {
-	  	var url = 'http://localhost/shalat-yuk/assets/json/'+jadwalShalat.getRandomInt(38)+'.json';
+	  	var url = 'https://riz4l.github.io/shalatyuk/assets/json/'+jadwalShalat.getRandomInt(38)+'.json';
 	  	$.ajax({
 		  dataType: "json",
 		  url: url,
