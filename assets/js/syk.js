@@ -56,7 +56,7 @@ var jadwalShalat = {
 		  dataType: "json",
 		  url: url,
 		  success: function(data){
-		  	console.log(data[0].doa);
+
 		  	var doa = document.getElementById('doa'),
 		  		ayat = document.getElementById('ayat'),
 		  		latin = document.getElementById('latin'),
@@ -146,7 +146,7 @@ var jadwalShalat = {
 	  display_ct: function()
 	  {
 		var x = new Date()
-		var x1= x.getDate() + "/"+  (x.getMonth() + 1) + "/" + x.getFullYear(); 
+		var x1= (x.getDate() < 10 ? '0':'') + x.getDate() + "/"+  (x.getMonth() + 1) + "/" + x.getFullYear(); 
 		x1 = x1 + " - " +  x.getHours( )+ ":" +  (x.getMinutes()<10?'0':'') + x.getMinutes()  + ":" +  x.getSeconds();
 		document.getElementById('ct').innerHTML = x1;
 		jadwalShalat.display_c();
