@@ -1,7 +1,7 @@
 var jadwalShalat = {
 	  url_kota : 'https://api.banghasan.com/sholat/format/json/kota',
 
-	  init :function() { 
+	  init : function() { 
 	  	jadwalShalat.display_ct();
 	  	jadwalShalat.getAyat();
 	  	jadwalShalat.runPlaceholder();
